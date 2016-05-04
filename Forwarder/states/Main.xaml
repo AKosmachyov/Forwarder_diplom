@@ -1,0 +1,46 @@
+﻿<Window x:Class="Forwarder.states.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
+        Title="Экспедитор" Height="442.5" Width="644" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="411" VerticalAlignment="Top" Width="636">
+            <TabItem Header="Заказы">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="31*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGridOrders" HorizontalAlignment="Left" Margin="23,29,0,0" VerticalAlignment="Top" Height="237" Width="342" AutoGenerateColumns="False" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№" Binding="{Binding Id}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>
+
+
+                            <DataGridTextColumn Header="Прием" Binding="{Binding Start}" ClipboardContentBinding="{x:Null}"/>
+                            <DataGridTextColumn Header="Сдача" Binding="{Binding Finish}" ClipboardContentBinding="{x:Null}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="+" HorizontalAlignment="Left" Margin="384,29,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Click_1"/>
+                    <Button Content="-" HorizontalAlignment="Left" Margin="384,69,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Click_2"/>
+                    <Button Content="e" HorizontalAlignment="Left" Margin="384,109,0,0" VerticalAlignment="Top" Width="35" Height="35" Click="Button_Click_3"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Профиль">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Пароль" Margin="28,29,543,328"/>
+                    <Label Content="Новый пароль" Margin="28,60,0,292" HorizontalAlignment="Left"/>
+                    <Label Content="Повторите пароль" Margin="28,96,492,257"/>
+                    <Label Content="Процент от заказа" Margin="28,203,480,153"/>
+                    <Button Content="Установить" HorizontalAlignment="Left" Height="28" Margin="175,244,0,0" VerticalAlignment="Top" Width="76"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="160,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"/>
+                    <PasswordBox HorizontalAlignment="Left" Margin="160,32,0,0" VerticalAlignment="Top" Width="111"/>
+                    <PasswordBox HorizontalAlignment="Left" Margin="160,68,0,0" VerticalAlignment="Top" Width="111"/>
+                    <PasswordBox HorizontalAlignment="Left" Margin="160,103,0,0" VerticalAlignment="Top" Width="111"/>
+                    <Button Content="Изменить" HorizontalAlignment="Left" Height="28" Margin="175,137,0,0" VerticalAlignment="Top" Width="76"/>
+                    <Separator HorizontalAlignment="Left" Height="61" Margin="0,156,0,0" VerticalAlignment="Top" Width="630"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
