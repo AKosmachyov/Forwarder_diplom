@@ -8,7 +8,7 @@
                 <DataGridTextColumn Header="id" Binding="{Binding Id}" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Номер" Binding="{Binding Number}" />
                 <DataGridTextColumn Header="Фирма" Binding="{Binding Firm.Name}" />
-                <DataGridTextColumn Header="Водители" Binding="{Binding Drivers.Name}" />
+                <DataGridTextColumn Header="Водители" Binding="{Binding Drivers[0].Name}" />
                 <DataGridTextColumn Header="Объем" Binding="{Binding MaxCapacity}" />
                 <DataGridTextColumn Header="Вес" Binding="{Binding MaxWeight}" />
                 <DataGridTextColumn Header="Цена" Binding="{Binding Price}" />

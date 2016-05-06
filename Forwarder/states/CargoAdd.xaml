@@ -4,8 +4,8 @@
         Title="Новый груз" Height="374" Width="567">
     <Grid>
         <TextBox Name="tbName" HorizontalAlignment="Left" Height="23" Margin="129,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="1"/>
-        <TextBox Name="tbCap" HorizontalAlignment="Left" Height="25" Margin="129,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="2"/>
-        <TextBox x:Name="tbWeig" HorizontalAlignment="Left" Height="24" Margin="129,101,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164" TabIndex="3"/>
+        <TextBox Name="tbCap" HorizontalAlignment="Left" Height="25" Margin="129,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="2" KeyDown="tbCap_KeyDown"/>
+        <TextBox x:Name="tbWeig" HorizontalAlignment="Left" Height="24" Margin="129,101,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164" TabIndex="3" KeyDown="tbCap_KeyDown"/>
         <DatePicker Name="dp1" HorizontalAlignment="Left" Height="29" Margin="352,50,0,0" VerticalAlignment="Top" Width="142" TabIndex="4"/>
         <DatePicker Name="dp2" HorizontalAlignment="Left" Height="29" Margin="352,125,0,0" VerticalAlignment="Top" Width="142" TabIndex="5"/>
         <Button Content="Выбрать" HorizontalAlignment="Left" Height="28" Margin="129,147,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click" TabIndex="6"/>

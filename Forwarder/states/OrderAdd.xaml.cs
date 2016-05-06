@@ -100,8 +100,7 @@ namespace Forwarder.states
         {
             var addOrderWindow = new CargoAdd();
             this.Hide();
-            addOrderWindow.ShowDialog();
-           
+            addOrderWindow.ShowDialog();           
             if (addOrderWindow.cargo!=null)
             {
                 ForwarderDB._db.Cargos.Add(addOrderWindow.cargo);
@@ -117,10 +116,10 @@ namespace Forwarder.states
         {
             if (dataGridCargo.SelectedItems.Count>0)
             {
-                var t = dataGridCargo.SelectedItems[0] as Cargo;
-                ForwarderDB._db.Entry(t).State = EntityState.Deleted;
+                var cargoDb = dataGridCargo.SelectedItems[0] as Cargo;
+                ForwarderDB._db.Entry(cargoDb).State = EntityState.Deleted;
                 ForwarderDB._db.SaveChanges();
-                order.Cargos.Remove(t);
+                order.Cargos.Remove(cargoDb);
                 dataGridCargo.Items.Refresh();
             }
         }
@@ -129,47 +128,20 @@ namespace Forwarder.states
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             if (dataGridCargo.SelectedItems.Count > 0)
-            {
-                var addOrderWindow = new CargoAdd();
-                var t = dataGridCargo.SelectedItems[0] as Cargo;
-                var a = ForwarderDB._db.Cargos.Where(x => x.Id == t.Id).First();
-                addOrderWindow.tbName.Text = t.Name;
-                addOrderWindow.tbCap.Text = t.Capacity.ToString();
-                addOrderWindow.tbWeig.Text = t.Weight.ToString();
-                addOrderWindow.cargo.Car = t.Car;
-                addOrderWindow.tbStart.Text = t.StartRoute;
-                addOrderWindow.tbFinish.Text = t.FinishRoute;
-                addOrderWindow.label1.Content = t.Car.Number;
-                addOrderWindow.dp1.SelectedDate = t.DataTake;
-                addOrderWindow.dp2.SelectedDate = t.DataReturn;
-                addOrderWindow.cbStatus.SelectedIndex = t.Status;
-                
+            {                
+                var cargoDg = dataGridCargo.SelectedItems[0] as Cargo;
+                var cargoDb = ForwarderDB._db.Cargos.Where(x => x.Id == cargoDg.Id).First();
+                var addOrderWindow = new CargoAdd(cargoDb);
+                this.Hide();
                 addOrderWindow.ShowDialog();
                 if (addOrderWindow.cargo !=null)
-                {
-                    a.Name=addOrderWindow.tbName.Text;
-                    a.Capacity=Convert.ToDouble(addOrderWindow.tbCap.Text);
-                    a.Weight=Convert.ToDouble(addOrderWindow.tbWeig.Text);                    
-                    a.StartRoute=addOrderWindow.tbStart.Text;
-                    a.FinishRoute=addOrderWindow.tbFinish.Text;
-                    a.Car=addOrderWindow.cargo.Car;
-                    a.DataTake = addOrderWindow.dp1.DisplayDate;
-                    a.DataReturn = addOrderWindow.dp2.DisplayDate;
-                    a.Status=Convert.ToByte(addOrderWindow.cbStatus.SelectedIndex);
-                
-                    ForwarderDB._db.Entry(a).State = EntityState.Modified;
+                {                    
+                    ForwarderDB._db.Entry(addOrderWindow.cargo).State = EntityState.Modified;
                     ForwarderDB._db.SaveChanges();
-                    t.Name = addOrderWindow.tbName.Text;
-                    t.Capacity =Convert.ToDouble(addOrderWindow.tbCap.Text);
-                    t.Weight = Convert.ToDouble(addOrderWindow.tbWeig.Text);
-                    t.StartRoute = addOrderWindow.tbStart.Text;
-                    t.FinishRoute = addOrderWindow.tbFinish.Text;
-                    t.Car = addOrderWindow.cargo.Car;
-                    t.DataTake = addOrderWindow.dp1.DisplayDate;
-                    t.DataReturn = addOrderWindow.dp2.DisplayDate;
-                    t.Status = Convert.ToByte(addOrderWindow.cbStatus.SelectedIndex);
+                    cargoDg = addOrderWindow.cargo;
                     dataGridCargo.Items.Refresh();
                 }
+                this.ShowDialog();
             }
         }
 
