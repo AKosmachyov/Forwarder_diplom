@@ -43,16 +43,7 @@ namespace Forwarder.states
                 lbClient.Content = clientFormWindow.choice.Name;
             }
             this.ShowDialog();
-        }
-
-        //собирает класс 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            order.Status = Convert.ToByte(cbStatus.SelectedIndex);
-            order.Start = datePicker1.SelectedDate;
-            order.Finish = datePicker2.SelectedDate;
-            this.Close();
-        }
+        }        
         
         //Обработка маршрута
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -197,7 +188,22 @@ namespace Forwarder.states
         {
             dataGridCargo.ItemsSource = order.Cargos;
             dataGridRacxod.ItemsSource = order.Racxod;
-        }     
-                
+        }
+
+        //собирает класс 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (order.Client != null && order.Way != null && order.Cargos != null)
+            {
+                order.Status = Convert.ToByte(cbStatus.SelectedIndex);
+                order.Start = datePicker1.SelectedDate;
+                order.Finish = datePicker2.SelectedDate;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Поля не заполнены");
+            }
+        }
     }
 }
