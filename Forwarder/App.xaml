@@ -1,7 +1,7 @@
 ﻿<Application x:Class="Forwarder.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="states/CarAdd.xaml">
+             StartupUri="states/OrderAdd.xaml">
     <Application.Resources>
          
     </Application.Resources>

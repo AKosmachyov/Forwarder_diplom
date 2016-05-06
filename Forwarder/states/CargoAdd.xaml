@@ -3,33 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Новый груз" Height="374" Width="567">
     <Grid>
-        <TextBox Name="tbName" HorizontalAlignment="Left" Height="23" Margin="129,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164"/>
-
-        <TextBox x:Name="tbWeig" HorizontalAlignment="Left" Height="24" Margin="129,101,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164"/>
-
-        <DatePicker Name="dp1" HorizontalAlignment="Left" Height="29" Margin="352,50,0,0" VerticalAlignment="Top" Width="142"/>
-        <DatePicker Name="dp2" HorizontalAlignment="Left" Height="29" Margin="352,125,0,0" VerticalAlignment="Top" Width="142"/>
+        <TextBox Name="tbName" HorizontalAlignment="Left" Height="23" Margin="129,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="1"/>
+        <TextBox Name="tbCap" HorizontalAlignment="Left" Height="25" Margin="129,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="2"/>
+        <TextBox x:Name="tbWeig" HorizontalAlignment="Left" Height="24" Margin="129,101,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164" TabIndex="3"/>
+        <DatePicker Name="dp1" HorizontalAlignment="Left" Height="29" Margin="352,50,0,0" VerticalAlignment="Top" Width="142" TabIndex="4"/>
+        <DatePicker Name="dp2" HorizontalAlignment="Left" Height="29" Margin="352,125,0,0" VerticalAlignment="Top" Width="142" TabIndex="5"/>
+        <Button Content="Выбрать" HorizontalAlignment="Left" Height="28" Margin="129,147,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click" TabIndex="6"/>
+        <TextBox Name="tbStart"  HorizontalAlignment="Left" Height="24" Margin="129,204,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164" TabIndex="7"/>
+        <TextBox Name="tbFinish"  HorizontalAlignment="Left" Height="24" Margin="129,246,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164" TabIndex="8"/>
         <Label Content="Название груза" HorizontalAlignment="Left" Height="28" Margin="10,22,0,0" VerticalAlignment="Top" Width="97"/>
         <Label Content="Вес" HorizontalAlignment="Left" Height="29" Margin="10,58,0,0" VerticalAlignment="Top" Width="35"/>
         <Label Content="Объем" HorizontalAlignment="Left" Height="24" Margin="10,101,0,0" VerticalAlignment="Top" Width="64"/>
-        <Label Content="Машина" HorizontalAlignment="Left" Height="28" Margin="10,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <Button Content="Выбрать" HorizontalAlignment="Left" Height="28" Margin="129,147,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click"/>
-        <TextBox Name="tbStart"  HorizontalAlignment="Left" Height="24" Margin="129,204,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164"/>
-        <Label Content="Начальная точка" HorizontalAlignment="Left" Height="29" Margin="10,199,0,0" VerticalAlignment="Top" Width="107"/>
-        <TextBox Name="tbFinish"  HorizontalAlignment="Left" Height="24" Margin="129,246,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="164"/>
+        <Label Content="Машина" HorizontalAlignment="Left" Height="28" Margin="10,148,0,0" VerticalAlignment="Top" Width="94"/>        
+        <Label Content="Начальная точка" HorizontalAlignment="Left" Height="29" Margin="10,199,0,0" VerticalAlignment="Top" Width="107"/>        
         <Label Content="Конечная точка" HorizontalAlignment="Left" Height="29" Margin="10,241,0,0" VerticalAlignment="Top" Width="97"/>
-        <Button Content="Создать" HorizontalAlignment="Left" Height="24" Margin="447,305,0,0" VerticalAlignment="Top" Width="72" Click="Button_Click_1"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Height="24" Margin="296,305,0,0" VerticalAlignment="Top" Width="72"/>
         <Label Content="Дата получения" HorizontalAlignment="Left" Height="30" Margin="352,20,0,0" VerticalAlignment="Top" Width="99"/>
         <Label Content="Дата возврата" HorizontalAlignment="Left" Height="33" Margin="352,92,0,0" VerticalAlignment="Top" Width="99"/>
-        <Label Name="label1" HorizontalAlignment="Left" Height="28" Margin="237,148,0,0" VerticalAlignment="Top" Width="99" RenderTransformOrigin="0.583,0.7"/>
-        <TextBox Name="tbCap" HorizontalAlignment="Left" Height="25" Margin="129,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164"/>
+        <Label Name="label1" HorizontalAlignment="Left" Height="28" Margin="237,148,0,0" VerticalAlignment="Top" Width="99" RenderTransformOrigin="0.583,0.7"/>        
         <Label Content="Статус" HorizontalAlignment="Left" Height="29" Margin="352,204,0,0" VerticalAlignment="Top" Width="62"/>
-        <ComboBox Name="cbStatus" HorizontalAlignment="Left" Height="24" Margin="419,204,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0">
+        <ComboBox Name="cbStatus" HorizontalAlignment="Left" Height="24" Margin="419,204,0,0" VerticalAlignment="Top" Width="80" SelectedIndex="0" TabIndex="9">
             <TextBlock>Погрузка</TextBlock>
             <TextBlock>В пути</TextBlock>
             <TextBlock>Разгрузка</TextBlock>
             <TextBlock>Проблема</TextBlock>
         </ComboBox>
+        <Button Content="Создать" HorizontalAlignment="Left" Height="24" Margin="447,305,0,0" VerticalAlignment="Top" Width="72" Click="Button_Click_1" TabIndex="10"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Height="24" Margin="296,305,0,0" VerticalAlignment="Top" Width="72" TabIndex="11" Click="Button_Click_2"/>
     </Grid>
 </Window>

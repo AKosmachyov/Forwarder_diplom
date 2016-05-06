@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AddClient" Height="260" Width="300">
     <Grid>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="31,186,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click_1"/>
-        <Button Content="Создать" HorizontalAlignment="Left" Margin="183,186,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click" />
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="20" Margin="31,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="20" Margin="31,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" MaxLength="15" MaxLines="1" TabIndex="2147483636"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="31,186,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click_1" TabIndex="4"/>
+        <Button Content="Создать" HorizontalAlignment="Left" Margin="183,186,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click" TabIndex="3" />
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="20" Margin="31,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227" TabIndex="1"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="20" Margin="31,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" MaxLength="15" MaxLines="1" TabIndex="2"/>
         <Label Content="Введите название фирмы заказчика" Margin="31,24,34,0" VerticalAlignment="Top"/>
         <Label Content="Контактный номер" HorizontalAlignment="Left" Margin="31,97,0,0" VerticalAlignment="Top" Width="227"/>
 

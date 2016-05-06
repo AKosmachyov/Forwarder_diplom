@@ -38,9 +38,9 @@ namespace Forwarder.states
             newWindow.ShowDialog();
             if (newWindow.client != null)
             {
-                ForwarderDB._db.Clients.Add(newWindow.client);
-                clients.Add(newWindow.client);                
+                ForwarderDB._db.Clients.Add(newWindow.client); 
                 ForwarderDB._db.SaveChanges();
+                clients.Add(newWindow.client);
                 dataGrid.Items.Refresh();
             }
             this.ShowDialog();
@@ -50,42 +50,30 @@ namespace Forwarder.states
         {
             if (dataGrid.SelectedItems.Count > 0)
             {
-                var t = dataGrid.SelectedItems[0] as Client;
-                //
-                ForwarderDB._db.Entry(t).State = EntityState.Deleted;
+                var clientDg = dataGrid.SelectedItems[0] as Client;                
+                ForwarderDB._db.Entry(clientDg).State = EntityState.Deleted;
                 ForwarderDB._db.SaveChanges();
-                clients.Remove(t);
+                clients.Remove(clientDg);
                 dataGrid.Items.Refresh();
             }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            var newWindow = new ClientAdd();            
-            var t = dataGrid.SelectedItems[0] as Client;
-            var a=ForwarderDB._db.Clients.Where(x=>x.Id==t.Id).First();   
-            newWindow.textBox1.Text = t.Name;
-            newWindow.textBox2.Text = t.Phone;
+        {                      
+            var clientDg = dataGrid.SelectedItems[0] as Client;
+            var clientDb=ForwarderDB._db.Clients.Where(x=>x.Id==clientDg.Id).First();
+            var newWindow = new ClientAdd(clientDb);
+            this.Hide();
             newWindow.ShowDialog();
             if (newWindow.client != null) 
-            {
-                a.Name=newWindow.client.Name;
-                a.Phone=newWindow.client.Phone;
-                ForwarderDB._db.Entry(a).State=EntityState.Modified;
+            {                
+                ForwarderDB._db.Entry(newWindow.client).State=EntityState.Modified;
                 ForwarderDB._db.SaveChanges();
-                t.Name = newWindow.client.Name;
-                t.Phone = newWindow.client.Phone;
+                clientDg = newWindow.client;                
                 dataGrid.Items.Refresh();               
-            }        
+            }
+            this.ShowDialog();
        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            clients = ForwarderDB._db.Clients.ToList();
-            dataGrid.ItemsSource =clients ;
-            dataGrid.Items.Refresh();
-        }
-
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItems.Count > 0)
@@ -93,6 +81,19 @@ namespace Forwarder.states
                 choice = dataGrid.SelectedItems[0] as Client;
                 this.Close();
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            clients = ForwarderDB._db.Clients.ToList();
+            dataGrid.ItemsSource = clients;
+            dataGrid.Items.Refresh();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            choice = null;
+            this.Close();
         }
 
   }

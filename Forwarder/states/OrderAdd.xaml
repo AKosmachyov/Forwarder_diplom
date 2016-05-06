@@ -8,8 +8,9 @@
             <TabItem Header="Заказ" >
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0" Height="412" VerticalAlignment="Top">
                     <Label Content="Выберите заказчика" HorizontalAlignment="Left" Margin="9,50,0,0" VerticalAlignment="Top"/>
-                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="149,56,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-                    <DatePicker x:Name="datePicker1" HorizontalAlignment="Left" Margin="495,44,0,0" VerticalAlignment="Top"/>
+                    <Button Content="Открыть" HorizontalAlignment="Left" Margin="149,56,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" TabIndex="2"/>
+                    <DatePicker x:Name="datePicker1" HorizontalAlignment="Left" Margin="495,44,0,0" VerticalAlignment="Top" TabIndex="3"/>
+                    <DatePicker x:Name="datePicker2" HorizontalAlignment="Left" Margin="664,44,0,0" VerticalAlignment="Top" TabIndex="4"/>
                     <DataGrid x:Name="dataGridCargo" HorizontalAlignment="Left" Margin="9,214,0,0" VerticalAlignment="Top" Height="136" Width="790" AutoGenerateColumns="False" IsReadOnly="True" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="id" Binding="{Binding Id}" Visibility="Hidden"/>
@@ -23,9 +24,8 @@
                             <DataGridTextColumn Header="Город" Binding="{Binding StartRoute, UpdateSourceTrigger=PropertyChanged}" />
                             <DataGridTextColumn Header="Город" Binding="{Binding FinishRoute, UpdateSourceTrigger=PropertyChanged}"/>
                         </DataGrid.Columns>
-                    </DataGrid>
-                    <DatePicker x:Name="datePicker2" HorizontalAlignment="Left" Margin="664,44,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="cbStatus" HorizontalAlignment="Left" Height="24" Margin="80,12,0,0" VerticalAlignment="Top" Width="107" SelectedIndex="0">
+                    </DataGrid>                    
+                    <ComboBox x:Name="cbStatus" HorizontalAlignment="Left" Height="24" Margin="80,12,0,0" VerticalAlignment="Top" Width="107" SelectedIndex="0" TabIndex="1">
                         <TextBlock>Выполняется</TextBlock>
                         <TextBlock>Завершён</TextBlock>
                         <TextBlock>Проблема</TextBlock>
@@ -33,15 +33,15 @@
                     <Label Content="Статус" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                     <Label Content="Начало заказа" HorizontalAlignment="Left" Margin="495,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Дата сдачи заказа" HorizontalAlignment="Left" Margin="657,10,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="texBoxRoute" HorizontalAlignment="Left" Height="23" Margin="9,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" ToolTip="Пример: Минск : Витебск"/>
+                    <TextBox x:Name="texBoxRoute" HorizontalAlignment="Left" Height="23" Margin="9,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="588" ToolTip="Пример: Минск : Витебск" TabIndex="5"/> 
                     <Label x:Name="lb1"  HorizontalAlignment="Left" Height="36" Margin="9,95,0,0" VerticalAlignment="Top" Width="303"/>
-                    <Button Content="Маршрут" HorizontalAlignment="Left" Height="24" Margin="613,144,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
-                    <Button Content="+" HorizontalAlignment="Left" Height="20" Margin="673,189,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_4"/>
-                    <Button Content="-" HorizontalAlignment="Left" Height="20" Margin="570,189,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_2" />
-                    <Button Content="e" HorizontalAlignment="Left" Height="20" Margin="467,189,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_8"  />
+                    <Button Content="Маршрут" HorizontalAlignment="Left" Height="24" Margin="613,144,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3" TabIndex="6"/>
+                    <Button Content="+" HorizontalAlignment="Left" Height="20" Margin="673,189,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_4" TabIndex="7"/>
+                    <Button Content="-" HorizontalAlignment="Left" Height="20" Margin="570,189,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_2" TabIndex="8"/>
+                    <Button Content="e" HorizontalAlignment="Left" Height="20" Margin="467,189,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_8"  TabIndex="9"/>
                     <Label Name="lbClient" HorizontalAlignment="Left" Height="26" Margin="259,56,0,0" VerticalAlignment="Top" Width="133"/>
-                    <Button Content="Сохранить" HorizontalAlignment="Left" Height="26" Margin="692,366,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click_1"/>
-                    <Button Content="Закрыть" HorizontalAlignment="Left" Height="26" Margin="517,366,0,0" VerticalAlignment="Top" Width="95"/>
+                    <Button Content="Сохранить" HorizontalAlignment="Left" Height="26" Margin="692,366,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click_1" TabIndex="10"/>
+                    <Button Content="Закрыть" HorizontalAlignment="Left" Height="26" Margin="517,366,0,0" VerticalAlignment="Top" Width="95" TabIndex="11"/>
 
                 </Grid>
             </TabItem>
@@ -56,9 +56,9 @@
                             <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="167"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="+" HorizontalAlignment="Left" Height="35" Margin="383,18,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_5"/>
-                    <Button Content="-" HorizontalAlignment="Left" Height="35" Margin="383,58,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_6"/>
-                    <Button Content="e" HorizontalAlignment="Left" Height="35" Margin="383,98,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_7"/>
+                    <Button Content="+" HorizontalAlignment="Left" Height="35" Margin="383,18,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_5" TabIndex="1"/>
+                    <Button Content="-" HorizontalAlignment="Left" Height="35" Margin="383,58,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_6" TabIndex="2"/>
+                    <Button Content="e" HorizontalAlignment="Left" Height="35" Margin="383,98,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_7" TabIndex="3"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -24,18 +24,33 @@ namespace Forwarder.states
         {
             InitializeComponent();
         }
-
+        public ClientAdd(Client clientDb)
+        {
+            InitializeComponent();
+            client = clientDb;
+            textBox1.Text = clientDb.Name;
+            textBox2.Text = clientDb.Phone;
+        }
+        public Client client = new Client();
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            client = new Client { Name = textBox1.Text, Phone = textBox2.Text };
-            this.Close();
+            if (textBox1.Text.Length > 0 && textBox2.Text.Length > 0)
+            {
+                client.Name = textBox1.Text;
+                client.Phone = textBox2.Text;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Поля не заполнены");
+            }
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            client = null;
             this.Close();
         }
-        public Client client;
+        
                
     }
 }

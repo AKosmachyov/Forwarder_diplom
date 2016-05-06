@@ -34,10 +34,15 @@ namespace Forwarder.states
         //открывает форма выбора клиента
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var t = new ClientForm();
-            t.ShowDialog();            
-            order.Client = t.choice;
-            lbClient.Content = t.choice.Name;       
+            var clientFormWindow = new ClientForm();
+            this.Hide();
+            clientFormWindow.ShowDialog();
+            if (clientFormWindow.choice != null)
+            {
+                order.Client = clientFormWindow.choice;
+                lbClient.Content = clientFormWindow.choice.Name;
+            }
+            this.Show();
         }
 
         //собирает класс 

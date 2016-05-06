@@ -19,7 +19,6 @@ namespace Forwarder.DB
         {
             //Отчистка всех таблиц 
             //Database.SetInitializer<DBContext>(new DropCreateDatabaseAlways<DBContext>());
-
         }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
