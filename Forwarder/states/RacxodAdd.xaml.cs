@@ -59,5 +59,22 @@ namespace Forwarder.states
             this.Close();
         }
 
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;            
+            //var t = KeyInterop.VirtualKeyFromKey(e.Key);
+            if (e.Key == Key.OemComma || e.Key == Key.Decimal)               
+            {                
+                e.Handled=false;   
+            }
+            // Пропускаем цифровые кнопки
+            if ((e.Key >= Key.D0) && (e.Key <= Key.D9)) e.Handled = false;
+            // Пропускаем цифровые кнопки с NumPad'а
+            if ((e.Key >= Key.NumPad0) && (e.Key <= Key.NumPad9)) e.Handled = false;
+            // Пропускаем Delete, Back, Left и Right
+            if ((e.Key == Key.Delete) || (e.Key == Key.Back) ||
+                (e.Key == Key.Left) || (e.Key == Key.Right)) e.Handled = false;        
+        }
+
     }
 }
