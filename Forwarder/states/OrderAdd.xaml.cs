@@ -176,13 +176,13 @@ namespace Forwarder.states
         //Расход добавление
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            var addRacoxWindow = new RacxodAdd();
-            addRacoxWindow.ShowDialog();
-            if (addRacoxWindow.racxod != null)
+            var addRacxodWindow = new RacxodAdd();
+            addRacxodWindow.ShowDialog();
+            if (addRacxodWindow.racxod != null)
             {
-                ForwarderDB._db.Racxods.Add(addRacoxWindow.racxod);
+                ForwarderDB._db.Racxods.Add(addRacxodWindow.racxod);
                 ForwarderDB._db.SaveChanges();
-                order.Racxod.Add(addRacoxWindow.racxod);
+                order.Racxod.Add(addRacxodWindow.racxod);
                 dataGridRacxod.Items.Refresh();
             }
         }
@@ -190,42 +190,42 @@ namespace Forwarder.states
         //Расход удаление
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            var t = dataGridRacxod.SelectedItems[0] as Racxod;
-            
-            ForwarderDB._db.Entry(t).State = EntityState.Deleted;
-            ForwarderDB._db.SaveChanges();
-            order.Racxod.Remove(t);
-            dataGridRacxod.Items.Refresh();
+            if (dataGridRacxod.SelectedItems.Count > 0)
+            {
+                var racxodDg = dataGridRacxod.SelectedItems[0] as Racxod;
+                ForwarderDB._db.Entry(racxodDg).State = EntityState.Deleted;
+                ForwarderDB._db.SaveChanges();
+                order.Racxod.Remove(racxodDg);
+                dataGridRacxod.Items.Refresh();
+            }
         }
 
         //Расход изменение
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            var addRacoxWindow = new RacxodAdd();
-            var t = dataGridRacxod.SelectedItems[0] as Racxod;
-            var a = ForwarderDB._db.Racxods.Where(x => x.Id == t.Id).First();
-            addRacoxWindow.textBox1.Text = t.Name;
-            addRacoxWindow.textBox2.Text = t.Price.ToString();
-            addRacoxWindow.ShowDialog();
-            if (addRacoxWindow.racxod != null)
+            if (dataGridRacxod.SelectedItems.Count > 0)
             {
-                a.Name = addRacoxWindow.racxod.Name;
-                a.Price = addRacoxWindow.racxod.Price;
-                ForwarderDB._db.Entry(a).State = EntityState.Modified;
-                ForwarderDB._db.SaveChanges();
-                t.Name = addRacoxWindow.racxod.Name;
-                t.Price = addRacoxWindow.racxod.Price;
-                dataGridRacxod.Items.Refresh();
-            }        
+                var racxodDg = dataGridRacxod.SelectedItems[0] as Racxod;
+                var racxodDb = ForwarderDB._db.Racxods.Where(x => x.Id == racxodDg.Id).First();
+                var addRacoxWindow = new RacxodAdd(racxodDb);
+                this.Hide();
+                addRacoxWindow.ShowDialog();
+                if (addRacoxWindow.racxod != null)
+                {
+                    ForwarderDB._db.Entry(addRacoxWindow.racxod).State = EntityState.Modified;
+                    ForwarderDB._db.SaveChanges();
+                    racxodDg = addRacoxWindow.racxod;
+                    dataGridRacxod.Items.Refresh();
+                }
+                this.Show();
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             dataGridCargo.ItemsSource = order.Cargos;
             dataGridRacxod.ItemsSource = order.Racxod;
-        }
-
-        
+        }     
                 
     }
 }
