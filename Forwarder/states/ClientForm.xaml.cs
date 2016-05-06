@@ -32,9 +32,9 @@ namespace Forwarder.states
         public Client choice;
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
+        {            
             var newWindow = new ClientAdd();
+            this.Hide();
             newWindow.ShowDialog();
             if (newWindow.client != null)
             {
@@ -59,21 +59,24 @@ namespace Forwarder.states
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
-        {                      
-            var clientDg = dataGrid.SelectedItems[0] as Client;
-            var clientDb=ForwarderDB._db.Clients.Where(x=>x.Id==clientDg.Id).First();
-            var newWindow = new ClientAdd(clientDb);
-            this.Hide();
-            newWindow.ShowDialog();
-            if (newWindow.client != null) 
-            {                
-                ForwarderDB._db.Entry(newWindow.client).State=EntityState.Modified;
-                ForwarderDB._db.SaveChanges();
-                clientDg = newWindow.client;                
-                dataGrid.Items.Refresh();               
+        {
+            if (dataGrid.SelectedItems.Count > 0)
+            {
+                var clientDg = dataGrid.SelectedItems[0] as Client;
+                var clientDb = ForwarderDB._db.Clients.Where(x => x.Id == clientDg.Id).First();
+                var newWindow = new ClientAdd(clientDb);
+                this.Hide();
+                newWindow.ShowDialog();
+                if (newWindow.client != null)
+                {
+                    ForwarderDB._db.Entry(newWindow.client).State = EntityState.Modified;
+                    ForwarderDB._db.SaveChanges();
+                    clientDg = newWindow.client;
+                    dataGrid.Items.Refresh();
+                }
+                this.ShowDialog();
             }
-            this.ShowDialog();
-       }
+        }
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItems.Count > 0)

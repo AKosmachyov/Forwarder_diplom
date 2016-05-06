@@ -7,7 +7,7 @@
         <Label Content="Грузоподъемность в кг" HorizontalAlignment="Center" Margin="360,28,111,0" VerticalAlignment="Top" Width="150"/>
         <TextBox x:Name="textBoxPrice" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" MaxLines="1" HorizontalAlignment="Left" Margin="38,118,0,0" TabIndex="2" KeyDown="textBoxCapacity_KeyDown"/>
         <Label Content="Цена за 1 км" HorizontalAlignment="Center" Margin="38,87,449,0" VerticalAlignment="Top" Width="134"/>
-        <TextBox x:Name="textBoxWeight" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" MaxLines="1" HorizontalAlignment="Left" Margin="360,59,0,0" TabIndex="3"/>
+        <TextBox x:Name="textBoxWeight" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" MaxLines="1" HorizontalAlignment="Left" Margin="360,59,0,0" TabIndex="3" KeyDown="textBoxCapacity_KeyDown"/>
         <Label Content="Номер машины" HorizontalAlignment="Center" Margin="38,28,449,0" VerticalAlignment="Top" Width="134"/>
         <TextBox x:Name="textBoxCapacity" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" MaxLines="1" HorizontalAlignment="Left" Margin="360,118,0,0" TabIndex="4" KeyDown="textBoxCapacity_KeyDown"/>
         <Label Content="Объём грузового отсека" HorizontalAlignment="Left" Margin="360,87,77,0" VerticalAlignment="Top" Width="184"/>

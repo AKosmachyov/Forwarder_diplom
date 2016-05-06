@@ -98,7 +98,7 @@ namespace Forwarder.states
         {
             e.Handled = true;            
             //var t = KeyInterop.VirtualKeyFromKey(e.Key);
-            if (e.Key == Key.OemComma || e.Key == Key.Decimal)               
+            if (e.Key == Key.OemComma || e.Key == Key.Decimal || e.Key == Key.Tab)               
             {                
                 e.Handled=false;   
             }

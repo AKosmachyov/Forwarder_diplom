@@ -27,7 +27,14 @@ namespace Forwarder.states
         {
             InitializeComponent();
         }
-        private List<Order> orders;        
+        private List<Order> orders;
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            orders = ForwarderDB._db.Orders.ToList();
+            dataGridOrders.ItemsSource = orders;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var window = new OrderAdd();
@@ -49,13 +56,7 @@ namespace Forwarder.states
             }
             this.Show();
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            orders = ForwarderDB._db.Orders.ToList();
-            dataGridOrders.ItemsSource = orders;
-        }
-
+        
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (dataGridOrders.SelectedItems.Count > 0)

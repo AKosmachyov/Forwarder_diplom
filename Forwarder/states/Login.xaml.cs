@@ -20,9 +20,8 @@ namespace Forwarder.States
         {
             
             var window = new Main();
-            window.Show();
             this.Close();
-           
+            window.Show();                       
         }
 
         private void showErrorMessageBox(string title, string message)

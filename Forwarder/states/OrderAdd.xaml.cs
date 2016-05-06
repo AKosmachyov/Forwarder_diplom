@@ -42,7 +42,7 @@ namespace Forwarder.states
                 order.Client = clientFormWindow.choice;
                 lbClient.Content = clientFormWindow.choice.Name;
             }
-            this.Show();
+            this.ShowDialog();
         }
 
         //собирает класс 
@@ -189,7 +189,7 @@ namespace Forwarder.states
                     racxodDg = addRacoxWindow.racxod;
                     dataGridRacxod.Items.Refresh();
                 }
-                this.Show();
+                this.ShowDialog();
             }
         }
 
