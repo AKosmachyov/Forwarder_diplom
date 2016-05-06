@@ -29,6 +29,29 @@ namespace Forwarder.states
         {
             InitializeComponent();            
         }
+        public OrderAdd(Order orderDb)
+        {
+            InitializeComponent();
+            order = orderDb;
+            cbStatus.SelectedIndex = orderDb.Status;
+            datePicker1.SelectedDate = orderDb.Start;
+            datePicker2.SelectedDate = orderDb.Finish;
+            order.Client = orderDb.Client;
+            order.Cargos = orderDb.Cargos;
+            order.Racxod = orderDb.Racxod;
+            dataGridCargo.ItemsSource = order.Cargos;
+            dataGridRacxod.ItemsSource = order.Racxod;            
+            lbClient.Content = orderDb.Client.Name;
+            lb1.Content = "Расстояние: " + orderDb.Way.ToString() + " км";
+            order.Routes = orderDb.Routes;
+            texBoxRoute.Text = "";
+            foreach (var el in orderDb.Routes)
+            {
+                texBoxRoute.Text = texBoxRoute.Text + el.Name + ":";
+            }
+            dataGridCargo.Items.Refresh();
+            dataGridRacxod.Items.Refresh();
+        }
         public Order order=new Order();
 
         //открывает форма выбора клиента
@@ -204,6 +227,12 @@ namespace Forwarder.states
             {
                 MessageBox.Show("Поля не заполнены");
             }
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            order = null;
+            this.Close();
         }
     }
 }

@@ -14,8 +14,6 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="№" Binding="{Binding Id}" ClipboardContentBinding="{x:Null}"/>
                             <DataGridTextColumn Header="Статус" Binding="{Binding Status}"/>
-
-
                             <DataGridTextColumn Header="Прием" Binding="{Binding Start}" ClipboardContentBinding="{x:Null}"/>
                             <DataGridTextColumn Header="Сдача" Binding="{Binding Finish}" ClipboardContentBinding="{x:Null}"/>
                         </DataGrid.Columns>

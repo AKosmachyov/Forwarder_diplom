@@ -35,36 +35,29 @@ namespace Forwarder.states
             dataGridOrders.ItemsSource = orders;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var window = new OrderAdd();
-            window.Show();
-            this.Hide();
-        }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
+        {            
             var addOrderWindow = new OrderAdd();
+            this.Hide();
             addOrderWindow.ShowDialog();
             if (addOrderWindow.order != null)
             {
                 ForwarderDB._db.Orders.Add(addOrderWindow.order);
-                orders.Add(addOrderWindow.order);
                 ForwarderDB._db.SaveChanges();
+                orders.Add(addOrderWindow.order);                
                 dataGridOrders.Items.Refresh();
             }
-            this.Show();
+            this.ShowDialog();
         }
         
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (dataGridOrders.SelectedItems.Count > 0)
             {
-                var t = dataGridOrders.SelectedItems[0] as Order;                
-                ForwarderDB._db.Entry(t).State = EntityState.Deleted;
+                var orderDg = dataGridOrders.SelectedItems[0] as Order;                
+                ForwarderDB._db.Entry(orderDg).State = EntityState.Deleted;
                 ForwarderDB._db.SaveChanges();
-                orders.Remove(t);
+                orders.Remove(orderDg);
                 dataGridOrders.Items.Refresh();
             }
         }
@@ -72,52 +65,21 @@ namespace Forwarder.states
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             if (dataGridOrders.SelectedItems.Count > 0)
-            {
-                var addOrderWindow = new OrderAdd();
-                var t = dataGridOrders.SelectedItems[0] as Order;
-                var a = ForwarderDB._db.Orders.Where(x => x.Id == t.Id).First();
-
-                addOrderWindow.cbStatus.SelectedIndex = t.Status;
-                addOrderWindow.datePicker1.SelectedDate = t.Start;
-                addOrderWindow.datePicker2.SelectedDate = t.Finish;
-                addOrderWindow.order.Client = t.Client;
-                addOrderWindow.order.Cargos = t.Cargos;
-                addOrderWindow.order.Racxod = t.Racxod;
-                addOrderWindow.lbClient.Content = t.Client.Name;
-                addOrderWindow.lb1.Content = "Расстояние: "+t.Way.ToString()+" км";
-                addOrderWindow.texBoxRoute.Text = "";
-                foreach (var el in t.Routes)
-                {
-                    addOrderWindow.texBoxRoute.Text = addOrderWindow.texBoxRoute.Text + el.Name+":";
-                }
-                
-                addOrderWindow.order.Routes = t.Routes;
-
+            {               
+                var orderDg = dataGridOrders.SelectedItems[0] as Order;
+                var orderDb = ForwarderDB._db.Orders.Where(x => x.Id == orderDg.Id).First();
+                var addOrderWindow = new OrderAdd(orderDb);
+                this.Hide();
                 addOrderWindow.ShowDialog();
                 if (addOrderWindow.order != null)
-                {
-                    a.Status=Convert.ToByte(addOrderWindow.cbStatus.SelectedIndex);
-                    a.Start=addOrderWindow.datePicker1.SelectedDate;
-                    a.Finish=addOrderWindow.datePicker2.SelectedDate;
-                    a.Client=addOrderWindow.order.Client ;
-                    a.Cargos=addOrderWindow.order.Cargos;
-                    a.Racxod=addOrderWindow.order.Racxod;
-                    a.Routes=addOrderWindow.order.Routes;
-                    a.Way = addOrderWindow.order.Way;
+                {               
 
-                    ForwarderDB._db.Entry(a).State = EntityState.Modified;
+                    ForwarderDB._db.Entry(addOrderWindow.order).State = EntityState.Modified;
                     ForwarderDB._db.SaveChanges();
-                    t.Status = Convert.ToByte(addOrderWindow.cbStatus.SelectedIndex);
-                    t.Start = addOrderWindow.datePicker1.SelectedDate;
-                    t.Finish = addOrderWindow.datePicker2.SelectedDate;
-                    t.Client = addOrderWindow.order.Client;
-                    t.Cargos = addOrderWindow.order.Cargos;
-                    t.Racxod = addOrderWindow.order.Racxod;
-                    t.Routes = addOrderWindow.order.Routes;
-                    t.Way = Convert.ToInt32(addOrderWindow.order.Way);
-
+                    orderDg = addOrderWindow.order;
                     dataGridOrders.Items.Refresh();
                 }
+                this.ShowDialog();
             }
         }
 

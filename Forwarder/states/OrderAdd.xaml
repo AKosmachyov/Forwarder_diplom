@@ -41,7 +41,7 @@
                     <Button Content="e" HorizontalAlignment="Left" Height="20" Margin="467,189,0,0" VerticalAlignment="Top" Width="103" Click="Button_Click_8"  TabIndex="9"/>
                     <Label Name="lbClient" HorizontalAlignment="Left" Height="26" Margin="259,56,0,0" VerticalAlignment="Top" Width="133"/>
                     <Button Content="Сохранить" HorizontalAlignment="Left" Height="26" Margin="692,366,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click_1" TabIndex="10"/>
-                    <Button Content="Закрыть" HorizontalAlignment="Left" Height="26" Margin="517,366,0,0" VerticalAlignment="Top" Width="95" TabIndex="11"/>
+                    <Button Content="Закрыть" HorizontalAlignment="Left" Height="26" Margin="517,366,0,0" VerticalAlignment="Top" Width="95" TabIndex="11" Click="Button_Click_9"/>
 
                 </Grid>
             </TabItem>
