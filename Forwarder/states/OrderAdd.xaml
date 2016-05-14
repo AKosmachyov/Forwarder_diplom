@@ -59,6 +59,8 @@
                     <Button Content="+" HorizontalAlignment="Left" Height="35" Margin="383,18,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_5" TabIndex="1"/>
                     <Button Content="-" HorizontalAlignment="Left" Height="35" Margin="383,58,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_6" TabIndex="2"/>
                     <Button Content="e" HorizontalAlignment="Left" Height="35" Margin="383,98,0,0" VerticalAlignment="Top" Width="35" Click="Button_Click_7" TabIndex="3"/>
+                    <Label Content="Сумма расходов" HorizontalAlignment="Left" Height="35" Margin="455,23,0,0" VerticalAlignment="Top" Width="102"/>
+                    <Label x:Name="labelPrice"  HorizontalAlignment="Left" Height="35" Margin="576,23,0,0" VerticalAlignment="Top" Width="223"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -138,7 +138,7 @@ namespace Forwarder.states
             }
         }
 
-        //Расход изменение
+        //Груз изменение
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
             if (dataGridCargo.SelectedItems.Count > 0)
@@ -170,6 +170,8 @@ namespace Forwarder.states
                 ForwarderDB._db.SaveChanges();
                 order.Racxod.Add(addRacxodWindow.racxod);
                 dataGridRacxod.Items.Refresh();
+                order.Price += addRacxodWindow.racxod.Price;
+                labelPrice.Content = order.Price.ToString();
             }
         }
 
@@ -181,6 +183,8 @@ namespace Forwarder.states
                 var racxodDg = dataGridRacxod.SelectedItems[0] as Racxod;
                 ForwarderDB._db.Entry(racxodDg).State = EntityState.Deleted;
                 ForwarderDB._db.SaveChanges();
+                order.Price -= racxodDg.Price;
+                labelPrice.Content = order.Price.ToString();
                 order.Racxod.Remove(racxodDg);
                 dataGridRacxod.Items.Refresh();
             }
@@ -194,6 +198,7 @@ namespace Forwarder.states
                 var racxodDg = dataGridRacxod.SelectedItems[0] as Racxod;
                 var racxodDb = ForwarderDB._db.Racxods.Where(x => x.Id == racxodDg.Id).First();
                 var addRacoxWindow = new RacxodAdd(racxodDb);
+                order.Price -= racxodDb.Price;
                 this.Hide();
                 addRacoxWindow.ShowDialog();
                 if (addRacoxWindow.racxod != null)
@@ -202,6 +207,8 @@ namespace Forwarder.states
                     ForwarderDB._db.SaveChanges();
                     racxodDg = addRacoxWindow.racxod;
                     dataGridRacxod.Items.Refresh();
+                    order.Price += addRacoxWindow.racxod.Price;
+                    labelPrice.Content = order.Price.ToString();
                 }
                 this.ShowDialog();
             }
