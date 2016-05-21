@@ -14,5 +14,6 @@ namespace Forwarder.Entity
         public string Name { get; set; } 
         public double? Lat { get; set; }
         public double? Lng { get; set; }
+        public Order Order { get; set; }
     }
 }

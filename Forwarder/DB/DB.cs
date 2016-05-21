@@ -10,13 +10,14 @@ namespace Forwarder.DB
 {
     public static class ForwarderDB
     {
-        public static DBContext _db = new DBContext();       
+        public static DBContext _db = new DBContext();   
     }
     public class DBContext : DbContext
     {
         
         public DBContext()
         {
+            this.Configuration.LazyLoadingEnabled = false;
             //Отчистка всех таблиц 
             //Database.SetInitializer<DBContext>(new DropCreateDatabaseAlways<DBContext>());
         }

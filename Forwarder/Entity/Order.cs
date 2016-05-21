@@ -15,11 +15,7 @@ namespace Forwarder.Entity
             Routes = new List<Route>();
             Racxod = new List<Racxod>();
         }
-          //  cargos = carg;
-            //sendCargos = sC;
-           // routes = r;
-            //status = 0;
-        //}
+
         [Key]
         public int Id { get; set; }
         public Client Client { get; set; }
@@ -31,6 +27,7 @@ namespace Forwarder.Entity
         public ICollection<Route> Routes { get; set; }
         public float Way { get; set; }
         public ICollection<Racxod> Racxod { get; set; }
+        public User User { get; set; }
         
         
         

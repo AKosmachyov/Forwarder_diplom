@@ -9,12 +9,6 @@ namespace Forwarder.Entity
 {
     public class Cargo
     {
-       // public Cargo(string n, float c, float w)
-        //{
-          //  name = n;
-//            capacity = c;
-            //weight = w;
-        //}
         [Key]
         public int Id { get; set; }
         public Byte Status { get; set; }
@@ -26,8 +20,6 @@ namespace Forwarder.Entity
         public DateTime? DataReturn { get; set; }
         public string StartRoute { get; set; }
         public string FinishRoute { get; set; }
-        
-       
-        
+        public Order Order { get; set; } 
     }
 }
