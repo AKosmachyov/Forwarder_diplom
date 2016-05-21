@@ -27,7 +27,7 @@ namespace Forwarder.states
             InitializeComponent();
         }
 
-        public List<Driver> choice;
+        public Driver choice;
         private List<Driver> drivers;
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -87,11 +87,7 @@ namespace Forwarder.states
         {
             if (dataGridDriver.SelectedItems.Count > 0)
             {
-                choice = new List<Driver>();
-                foreach (Driver el in dataGridDriver.SelectedItems)
-                {
-                    choice.Add(el);
-                }                
+                choice = dataGridDriver.SelectedItems[0] as Driver;                            
                 this.Close();
             }
         }

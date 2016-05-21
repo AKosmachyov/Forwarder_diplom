@@ -13,7 +13,7 @@
         <Label Content="Объём грузового отсека" HorizontalAlignment="Left" Margin="360,87,77,0" VerticalAlignment="Top" Width="184"/>
 
         <Label Content="Перевозчик" HorizontalAlignment="Center" Margin="38,150,495,0" VerticalAlignment="Top" Width="88"/>
-        <Label Content="Водители" HorizontalAlignment="Center" Margin="360,150,193,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="Водитель" HorizontalAlignment="Center" Margin="360,150,193,0" VerticalAlignment="Top" Width="68"/>
         <Button Content="Выбрать" HorizontalAlignment="Left" Height="25" Margin="149,151,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click" TabIndex="5"/>
         <Button Content="Выбрать" HorizontalAlignment="Left" Height="25" Margin="471,151,0,0" VerticalAlignment="Top" Width="88" Click="Button_Click_1" TabIndex="6"/>
         <Label x:Name="labelFirm" HorizontalAlignment="Left" Margin="38,196,0,0" VerticalAlignment="Top" Width="122" Height="27"/>

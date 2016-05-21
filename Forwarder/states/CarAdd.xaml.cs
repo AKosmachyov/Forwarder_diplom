@@ -33,7 +33,7 @@ namespace Forwarder.states
             textBoxWeight.Text=carDb.MaxWeight.ToString();
             textBoxCapacity.Text = carDb.MaxCapacity.ToString();
             labelFirm.Content = carDb.Firm.Name;
-            labelDrivers.Content = carDb.Drivers.First().Name + "...";            
+            labelDrivers.Content = carDb.Drivers.Name;            
         }
 
         public Car car = new Car();
@@ -60,14 +60,14 @@ namespace Forwarder.states
             if (driverWindow.choice != null)
             {
                 car.Drivers = driverWindow.choice;
-                labelDrivers.Content = driverWindow.choice.First().Name+"...";
+                labelDrivers.Content = driverWindow.choice.Name;
             }
             this.ShowDialog();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (textBoxNumber.Text.Length > 0 && textBoxCapacity.Text.Length > 0 && textBoxPrice.Text.Length > 0 && textBoxWeight.Text.Length > 0 && car.Firm != null && car.Drivers.Count>0)
+            if (textBoxNumber.Text.Length > 0 && textBoxCapacity.Text.Length > 0 && textBoxPrice.Text.Length > 0 && textBoxWeight.Text.Length > 0 && car.Firm != null && car.Drivers!=null)
             {
                 try
                 {
