@@ -72,41 +72,44 @@ namespace Forwarder.states
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             string[] words = this.texBoxRoute.Text.Split(':');
-            var myRange = words.ToList().GetRange(1, words.Length - 2).ToArray();
-            var _request = new DirectionsRequest { Origin = words[0], Destination = words[words.Length - 1], Waypoints = myRange, OptimizeWaypoints = true };
-            try
+            if (words.Length > 1)
             {
-                var _result = GoogleMaps.Directions.Query(_request);
-                if (_result.Status == Status.OK)
+                var myRange = words.ToList().GetRange(1, words.Length - 2).ToArray();
+                var _request = new DirectionsRequest { Origin = words[0], Destination = words[words.Length - 1], Waypoints = myRange, OptimizeWaypoints = true };
+                try
                 {
-                    var km = 0;
-                    texBoxRoute.Text = "";
-                    foreach (var el in _result.Routes.First().Legs)
+                    var _result = GoogleMaps.Directions.Query(_request);
+                    if (_result.Status == Status.OK)
                     {
-                        km += el.Distance.Value;
+                        var km = 0;
+                        texBoxRoute.Text = "";
+                        foreach (var el in _result.Routes.First().Legs)
+                        {
+                            km += el.Distance.Value;
 
-                        order.Routes.Add(new Route { Name = el.StartAddress, Lat = el.StartLocation.Latitude, Lng = el.StartLocation.Longitude });
-                        texBoxRoute.Text = texBoxRoute.Text + el.StartAddress + ":";
+                            order.Routes.Add(new Route { Name = el.StartAddress, Lat = el.StartLocation.Latitude, Lng = el.StartLocation.Longitude });
+                            texBoxRoute.Text = texBoxRoute.Text + el.StartAddress + ":";
+                        }
+                        var lastAd = _result.Routes.First().Legs.Last();
+                        order.Routes.Add(new Route { Name = lastAd.EndAddress, Lat = lastAd.EndLocation.Latitude, Lng = lastAd.EndLocation.Longitude });
+                        texBoxRoute.Text = texBoxRoute.Text + lastAd.EndAddress;
+                        order.Way = km / 1000;
+                        this.lb1.Content = "Расстояние: " + (km / 1000).ToString() + " км";
+                    };
+                    if (_result.Status == Status.NOT_FOUND)
+                    {
+                        this.lb1.Content = "Город не найден";
                     }
-                    var lastAd = _result.Routes.First().Legs.Last();
-                    order.Routes.Add(new Route { Name = lastAd.EndAddress, Lat = lastAd.EndLocation.Latitude, Lng = lastAd.EndLocation.Longitude });
-                    texBoxRoute.Text = texBoxRoute.Text + lastAd.EndAddress;
-                    order.Way = km / 1000;
-                    this.lb1.Content = "Расстояние: "+(km / 1000).ToString()+" км";
-                };
-                if (_result.Status == Status.NOT_FOUND)
-                {
-                    this.lb1.Content = "Город не найден";
+                    if (_result.Status == Status.ZERO_RESULTS)
+                    {
+                        this.lb1.Content = "Не удалось проложить маршрут";
+                    }
                 }
-                if (_result.Status == Status.ZERO_RESULTS)
+                catch
                 {
-                    this.lb1.Content = "Не удалось проложить маршрут";
+                    this.lb1.Content = "Ошибка Соединения";
                 }
             }
-            catch
-            {                
-               this.lb1.Content="Ошибка Соединения";              
-            }    
         }
 
         //Добавить груз
