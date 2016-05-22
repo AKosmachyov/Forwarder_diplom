@@ -85,6 +85,7 @@
     <Compile Include="states\DriverAdd.xaml.cs">
       <DependentUpon>DriverAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="states\ForwarderDb.cs" />
     <Compile Include="states\RacxodAdd.xaml.cs">
       <DependentUpon>RacxodAdd.xaml</DependentUpon>
     </Compile>

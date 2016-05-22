@@ -11,9 +11,9 @@ namespace Forwarder.Entity
     {
         [Key]
         public int Id { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public decimal komissia { get; set; }
-        public ICollection<Order> orders { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public decimal Komissia { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }
