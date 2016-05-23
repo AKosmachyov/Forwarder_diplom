@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Forwarder.states.ClientAdd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AddClient" Height="260" Width="300">
+        Title="Новый клиент" Height="260" Width="300">
     <Grid>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="31,186,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click_1" TabIndex="4"/>
         <Button Content="Создать" HorizontalAlignment="Left" Margin="183,186,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="Button_Click" TabIndex="3" />

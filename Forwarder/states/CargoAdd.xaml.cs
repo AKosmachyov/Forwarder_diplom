@@ -28,7 +28,6 @@ namespace Forwarder.states
         {
             InitializeComponent();
             cargo = cargoDb;
-
             tbName.Text = cargoDb.Name;
             tbCap.Text = cargoDb.Capacity.ToString();
             tbWeig.Text = cargoDb.Weight.ToString();
