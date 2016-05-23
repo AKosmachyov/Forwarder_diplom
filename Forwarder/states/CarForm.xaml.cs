@@ -32,7 +32,7 @@ namespace Forwarder.states
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            listCar = ForwarderDB._db.Cars.ToList();
+            listCar = ForwarderDB._db.Cars.Include(b => b.Drivers).Include(c=>c.Firm).ToList();
             dataGridCar.ItemsSource = listCar;
         }
           

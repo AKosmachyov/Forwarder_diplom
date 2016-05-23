@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Forwarder.states.Main"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"        
-        Title="Экспедитор" Height="442.5" Width="644" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="Экспедитор" Height="442.5" Width="644" Closing="Window_Closing">
     <Grid>
         <TabControl HorizontalAlignment="Left" Height="411" VerticalAlignment="Top" Width="636">
             <TabItem Header="Заказы">
@@ -28,15 +28,16 @@
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Пароль" Margin="28,29,543,328"/>
                     <Label Content="Новый пароль" Margin="28,60,0,292" HorizontalAlignment="Left"/>
-                    <Label Content="Повторите пароль" Margin="28,96,492,257"/>
+                    <Label Content="Повторите пароль" Margin="28,96,480,257"/>
                     <Label Content="Процент от заказа" Margin="28,203,480,153"/>
-                    <Button Content="Установить" HorizontalAlignment="Left" Height="28" Margin="175,244,0,0" VerticalAlignment="Top" Width="76"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="160,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"/>
-                    <PasswordBox HorizontalAlignment="Left" Margin="160,32,0,0" VerticalAlignment="Top" Width="111"/>
-                    <PasswordBox HorizontalAlignment="Left" Margin="160,68,0,0" VerticalAlignment="Top" Width="111"/>
-                    <PasswordBox HorizontalAlignment="Left" Margin="160,103,0,0" VerticalAlignment="Top" Width="111"/>
-                    <Button Content="Изменить" HorizontalAlignment="Left" Height="28" Margin="175,137,0,0" VerticalAlignment="Top" Width="76"/>
+                    <Button Content="Установить" HorizontalAlignment="Left" Height="28" Margin="175,244,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click"/>
+                    <TextBox x:Name="textBoxKomissia" HorizontalAlignment="Left" Height="18" Margin="160,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111"/>
+                    <PasswordBox x:Name="textBoxOldPass" HorizontalAlignment="Left" Margin="160,32,0,0" VerticalAlignment="Top" Width="111"/>
+                    <PasswordBox x:Name="textBoxNewPass" HorizontalAlignment="Left" Margin="160,68,0,0" VerticalAlignment="Top" Width="111"/>
+                    <PasswordBox x:Name="textBoxRepitPass" HorizontalAlignment="Left" Margin="160,103,0,0" VerticalAlignment="Top" Width="111"/>
+                    <Button Content="Изменить" HorizontalAlignment="Left" Height="28" Margin="175,137,0,0" VerticalAlignment="Top" Width="76" Click="Button_Click_4"/>
                     <Separator HorizontalAlignment="Left" Height="61" Margin="0,156,0,0" VerticalAlignment="Top" Width="630"/>
+                    <Label x:Name="labelPass" Content="" HorizontalAlignment="Left" Height="26" Margin="308,29,0,0" VerticalAlignment="Top" Width="173"/>
                 </Grid>
             </TabItem>
         </TabControl>

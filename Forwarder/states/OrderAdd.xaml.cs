@@ -53,6 +53,11 @@ namespace Forwarder.states
             dataGridRacxod.Items.Refresh();
         }
         public Order order=new Order();
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataGridCargo.ItemsSource = order.Cargos;
+            dataGridRacxod.ItemsSource = order.Racxod;
+        }
 
         //открывает форма выбора клиента
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -83,6 +88,7 @@ namespace Forwarder.states
                     {
                         var km = 0;
                         texBoxRoute.Text = "";
+                        order.Routes.Clear();
                         foreach (var el in _result.Routes.First().Legs)
                         {
                             km += el.Distance.Value;
@@ -215,12 +221,6 @@ namespace Forwarder.states
                 }
                 this.ShowDialog();
             }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            dataGridCargo.ItemsSource = order.Cargos;
-            dataGridRacxod.ItemsSource = order.Racxod;
         }
 
         //собирает класс 

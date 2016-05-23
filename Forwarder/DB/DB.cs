@@ -16,8 +16,7 @@ namespace Forwarder.DB
     {
         
         public DBContext()
-        {
-            this.Configuration.LazyLoadingEnabled = false;
+        {           
             //Отчистка всех таблиц 
             //Database.SetInitializer<DBContext>(new DropCreateDatabaseAlways<DBContext>());
         }

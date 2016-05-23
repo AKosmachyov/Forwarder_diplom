@@ -82,6 +82,7 @@
     <Compile Include="states\ClientAdd.xaml.cs">
       <DependentUpon>ClientAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\Core.cs" />
     <Compile Include="states\DriverAdd.xaml.cs">
       <DependentUpon>DriverAdd.xaml</DependentUpon>
     </Compile>
