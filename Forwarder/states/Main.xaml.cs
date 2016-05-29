@@ -123,5 +123,15 @@ namespace Forwarder.states
             textBoxNewPass.Password = "";
             textBoxRepitPass.Password = "";
         }       
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Core.DisplayDrivers(ForwarderDB._db.Drivers.ToList());
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            Core.DisplayCars(ForwarderDB._db.Cars.Include(b => b.Firm).Include(b => b.Drivers));
+        }
     }
 }

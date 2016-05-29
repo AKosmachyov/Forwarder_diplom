@@ -40,6 +40,12 @@
                     <Label x:Name="labelPass" Content="" HorizontalAlignment="Left" Height="26" Margin="308,29,0,0" VerticalAlignment="Top" Width="173"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="Отчеты">
+                <Grid Background="#FFE5E5E5">
+                    <Button Content="Водители" HorizontalAlignment="Left" Height="21" Margin="86,26,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_5"/>
+                    <Button Content="Машины" HorizontalAlignment="Left" Height="21" Margin="86,80,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_6"/>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
