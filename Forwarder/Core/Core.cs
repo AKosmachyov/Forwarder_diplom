@@ -87,5 +87,34 @@ namespace Forwarder
             workSheet.Columns[4].AutoFit();
             workSheet.Columns[5].AutoFit();
         }
+        public static void DisplayPribil(IEnumerable<Order> orders, decimal kom)
+        {
+            var excelApp = new Excel.Application();
+            excelApp.Visible = true;
+            excelApp.Workbooks.Add();
+            Excel._Worksheet workSheet = (Excel.Worksheet)excelApp.ActiveSheet;
+            workSheet.Name = "Прибыль";
+            workSheet.Cells[1, "A"] = "№";
+            workSheet.Cells[1, "B"] = "Выручка";
+            workSheet.Cells[1, "C"] = "Приыбль";
+            kom = kom / 100;
+            var row = 2;
+            Decimal itogPribil = 0;
+            Decimal itogPrice = 0;
+            foreach (var order in orders)
+            {                
+                workSheet.Cells[row, "A"] = order.Id;
+                workSheet.Cells[row, "B"] = order.Price;
+                itogPribil += order.Price * kom;
+                itogPrice += order.Price;
+                workSheet.Cells[row, "C"] = order.Price*kom;
+                row++;
+            }
+            workSheet.Cells[row, "B"] = "Итог: " + itogPrice.ToString();
+            workSheet.Cells[row, "C"] = "Итог: " + itogPribil.ToString();
+            workSheet.Columns[1].AutoFit();
+            workSheet.Columns[2].AutoFit();
+            workSheet.Columns[3].AutoFit();        
+        }
     }
 }

@@ -133,5 +133,22 @@ namespace Forwarder.states
         {
             Core.DisplayCars(ForwarderDB._db.Cars.Include(b => b.Firm).Include(b => b.Drivers));
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            List<Order> s=new List<Order>();
+            foreach (var a in user.Orders)
+            {
+                if (dataPic1.SelectedDate <= a.Finish && dataPic2.SelectedDate >= a.Finish)
+                    s.Add(a);
+            }
+            if (s.Count == 0)
+            {
+                MessageBox.Show("В данный периуд заказов не обнаружено");
+                return;
+            }
+            Core.DisplayPribil(s,user.Komissia);
+            
+        }
     }
 }
