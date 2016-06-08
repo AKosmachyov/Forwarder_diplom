@@ -136,6 +136,8 @@ namespace Forwarder.states
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
+            if (user.Orders == null)
+                return;
             List<Order> s=new List<Order>();
             foreach (var a in user.Orders)
             {
