@@ -31,9 +31,8 @@ namespace Forwarder.states
         public Main(User userDb)
         {
             InitializeComponent();
-            user = userDb;
-            var a = ForwarderDB._db.Orders.Include(b => b.Cargos).Include(b => b.Racxod).Include(b => b.Client).Include(b => b.Routes).Where(b => b.User.Id == userDb.Id);
-            orders = a.ToList();            
+            user = userDb;            
+            orders = ForwarderDB._db.Orders.Include(b => b.Racxod).Where(b => b.User.Id == userDb.Id).ToList();            
             dataGridOrders.ItemsSource = orders;
             textBoxKomissia.Text = user.Komissia.ToString();
         }
@@ -72,7 +71,7 @@ namespace Forwarder.states
             if (dataGridOrders.SelectedItems.Count > 0)
             {               
                 var orderDg = dataGridOrders.SelectedItems[0] as Order;
-                var orderDb = ForwarderDB._db.Orders.Where(x => x.Id == orderDg.Id).First();
+                var orderDb = ForwarderDB._db.Orders.Include(b => b.Cargos.Select(o => o.Car)).Include(b => b.Racxod).Include(b => b.Client).Include(b => b.Routes).Where(x => x.Id == orderDg.Id).First();                
                 var addOrderWindow = new OrderAdd(orderDb);
                 this.Hide();
                 addOrderWindow.ShowDialog();

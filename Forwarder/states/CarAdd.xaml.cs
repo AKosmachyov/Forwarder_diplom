@@ -20,10 +20,12 @@ namespace Forwarder.states
     /// </summary>
     public partial class CarAdd : Window
     {
-        public CarAdd()
+        public CarAdd(Firm firm)
         {
             InitializeComponent();
+            car.Firm = firm;
         }
+
         public CarAdd(Car carDb)
         {
             InitializeComponent();
@@ -31,26 +33,11 @@ namespace Forwarder.states
             textBoxNumber.Text = carDb.Number;
             textBoxPrice.Text = carDb.Price.ToString();          
             textBoxWeight.Text=carDb.MaxWeight.ToString();
-            textBoxCapacity.Text = carDb.MaxCapacity.ToString();
-            labelFirm.Content = carDb.Firm.Name;
+            textBoxCapacity.Text = carDb.MaxCapacity.ToString();          
             labelDrivers.Content = carDb.Drivers.Name;            
         }
 
-        public Car car = new Car();
-        
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            var firmWindow = new FirmForm();            
-            firmWindow.ShowDialog();        
-    
-            if (firmWindow.choice != null)
-            {
-                car.Firm = firmWindow.choice;
-                labelFirm.Content = firmWindow.choice.Name;
-            }
-            this.ShowDialog();
-        }
+        public Car car = new Car();        
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -67,7 +54,7 @@ namespace Forwarder.states
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (textBoxNumber.Text.Length > 0 && textBoxCapacity.Text.Length > 0 && textBoxPrice.Text.Length > 0 && textBoxWeight.Text.Length > 0 && car.Firm != null && car.Drivers!=null)
+            if (textBoxNumber.Text.Length > 0 && textBoxCapacity.Text.Length > 0 && textBoxPrice.Text.Length > 0 && textBoxWeight.Text.Length > 0 && car.Firm != null && car.Drivers != null)
             {
                 try
                 {
@@ -78,7 +65,8 @@ namespace Forwarder.states
                     car.Number = textBoxNumber.Text;
                     this.Close();
                 }
-                catch {
+                catch
+                {
                     MessageBox.Show("Не верно заполнены поля");
                 }
             }

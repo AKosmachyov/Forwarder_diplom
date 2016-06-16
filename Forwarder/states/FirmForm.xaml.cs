@@ -26,7 +26,7 @@ namespace Forwarder.states
         {
             InitializeComponent();
         }
-        public Firm choice;
+        public Car choice;
         private List<Firm> firms;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -84,11 +84,14 @@ namespace Forwarder.states
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             if (dataGridFirm.SelectedItems.Count > 0)
-            {
-                choice = dataGridFirm.SelectedItems[0] as Firm;
+            {              
+                var firmDb = dataGridFirm.SelectedItems[0] as Firm;
+                var CarFormWindow = new CarForm(firmDb);
+                this.Hide();
+                CarFormWindow.ShowDialog();
+                if (CarFormWindow.choice != null)
+                    choice = CarFormWindow.choice;
                 this.Close();
-            }else {
-                MessageBox.Show("Элемент не выбран");  
             }
         }
 

@@ -42,13 +42,13 @@ namespace Forwarder.states
         public Cargo cargo = new Cargo();
         //Выбор машины
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var CarFormWindow = new CarForm();
+        {            
+            var FirmForm = new FirmForm();
             this.Hide();
-            CarFormWindow.ShowDialog();
-            if (CarFormWindow.choice != null)
+            FirmForm.ShowDialog();
+            if (FirmForm.choice != null)
             {
-                cargo.Car = CarFormWindow.choice;
+                cargo.Car = FirmForm.choice;
                 label1.Content = cargo.Car.Number;
             }
             this.ShowDialog();

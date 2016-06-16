@@ -18,7 +18,7 @@ namespace Forwarder.States
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        {            
             User user = ForwarderDB._db.Users.FirstOrDefault(x => x.Login == loginBox.Text);
             if (user == null)
             {

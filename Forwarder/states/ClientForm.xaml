@@ -1,22 +1,25 @@
 ﻿<Window x:Class="Forwarder.states.ClientForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Клиенты" Height="418.796" Width="404.478" Loaded="Window_Loaded">
+        Title="Клиенты" Height="278" Width="290" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid Margin="0,0,0,0">
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="16,15,0,0" VerticalAlignment="Top" Height="263" Width="287" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="192" Width="220" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="id" Binding="{Binding Id}" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Название фирмы" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="130"/>
-                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone,UpdateSourceTrigger=PropertyChanged}" Width="125"/>
-
+                <DataGridTextColumn Header="Название фирмы" Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="108"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Phone,UpdateSourceTrigger=PropertyChanged}" Width="104"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="+" HorizontalAlignment="Left" Margin="320,15,0,0" VerticalAlignment="Top" Width="35" Height="35" RenderTransformOrigin="0.976,0.286" Click="Button_Click" TabIndex="1"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="320,55,0,0" VerticalAlignment="Top" Width="35" Height="35" RenderTransformOrigin="0.976,0.286" Click="Button_Click_1" TabIndex="2"/>
-        <Button Content="e" HorizontalAlignment="Left" Margin="320,95,0,0" VerticalAlignment="Top" Width="35" Height="35" RenderTransformOrigin="0.976,0.286" Click="Button_Click_2" TabIndex="3"/>
-        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="280,344,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3" TabIndex="4"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="16,344,0,0" VerticalAlignment="Top" Width="75" TabIndex="5" Click="Button_Click_4"/>
-
-
+        <Button HorizontalAlignment="Left" Margin="242,10,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="Button_Click" TabIndex="1">
+            <Image Source="/Forwarder;component/Images/plus.png"/>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="242,40,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="Button_Click_1" TabIndex="2">
+            <Image Source="/Forwarder;component/Images/minus.png"/>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="242,70,0,0" VerticalAlignment="Top" Width="25" Height="25" Click="Button_Click_2" TabIndex="3">
+            <Image Source="/Forwarder;component/Images/edit.png" Height="25"/>
+        </Button>
+        <Button Content="Выбрать" HorizontalAlignment="Left" Margin="192,213,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3" TabIndex="4"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" Width="75" TabIndex="5" Click="Button_Click_4"/>
     </Grid>
 </Window>

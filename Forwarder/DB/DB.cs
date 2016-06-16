@@ -10,15 +10,15 @@ namespace Forwarder.DB
 {
     public static class ForwarderDB
     {
-        public static DBContext _db = new DBContext();          
+        public static DBContext _db = new DBContext();
     }
     public class DBContext : DbContext
     {
-        
-        public DBContext()
+        public DBContext(): base ("ForwarderContext")
         {
             Database.SetInitializer<DBContext>(new DBInitializer());
         }
+
         public DbSet<Car> Cars { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<Client> Clients { get; set; }
@@ -30,7 +30,7 @@ namespace Forwarder.DB
         public DbSet<User> Users { get; set; }
         
     }
-    public class DBInitializer : DropCreateDatabaseAlways<DBContext>
+    public class DBInitializer : CreateDatabaseIfNotExists<DBContext>
     {
         protected override void Seed(DBContext context)
         {

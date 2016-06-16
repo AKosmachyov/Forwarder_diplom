@@ -25,20 +25,24 @@ namespace Forwarder.states
         public CarForm()
         {
             InitializeComponent();
-        } 
-  
-        public Car choice;
-        private List<Car> listCar= new List<Car>();     
+        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        public CarForm(Firm firmDb)
         {
-            listCar = ForwarderDB._db.Cars.Include(b => b.Drivers).Include(c=>c.Firm).ToList();
+            InitializeComponent();
+            firm = firmDb;
+            var a = ForwarderDB._db.Cars.Include(b => b.Drivers).Where(b => b.Firm.Id == firmDb.Id);
+            listCar = a.ToList();            
             dataGridCar.ItemsSource = listCar;
         }
+  
+        public Car choice;
+        public Firm firm;
+        private List<Car> listCar= new List<Car>();        
           
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var carAddWindow = new CarAdd(); 
+            var carAddWindow = new CarAdd(firm); 
             this.Hide();
             carAddWindow.ShowDialog();              
             if (carAddWindow.car != null)

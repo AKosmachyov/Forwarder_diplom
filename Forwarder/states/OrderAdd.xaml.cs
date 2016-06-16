@@ -53,6 +53,8 @@ namespace Forwarder.states
             dataGridRacxod.Items.Refresh();
         }
         public Order order=new Order();
+        Boolean closeFlag = false;
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             dataGridCargo.ItemsSource = order.Cargos;
@@ -231,6 +233,7 @@ namespace Forwarder.states
                 order.Status = Convert.ToByte(cbStatus.SelectedIndex);
                 order.Start = datePicker1.SelectedDate;
                 order.Finish = datePicker2.SelectedDate;
+                closeFlag = true;
                 this.Close();
             }
             else
@@ -243,6 +246,14 @@ namespace Forwarder.states
         {
             order = null;
             this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            if (!closeFlag)
+            {
+                order = null;
+            }
         }
     }
 }
